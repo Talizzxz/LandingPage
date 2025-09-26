@@ -21,7 +21,7 @@
     body{margin:0;background:#e9e9e9;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text)}
 
     /* Más ancho */
-    .page{width:clamp(360px,94vw,1080px);margin:auto;background:var(--aqua);min-height:120vh;padding-bottom:56px}
+    .page{margin:auto;background:var(--aqua);min-height:120vh;padding-bottom:56px}
     .inner{width:clamp(350px,90vw,940px);margin-inline:auto}
 
     /* HERO */
@@ -30,19 +30,16 @@
     .notes-strip{display:block;max-width:10000px;width:100%;margin:32px auto 0;opacity:1}
 
     /* Intro con MÁS espaciado */
-    .intro{text-align:center;line-height: normal;font-size: 40px; color: #5805A1;font-family:Georgia;font-style: 40px;font-weight: 400;}
+    .intro{margin-top:20px;text-align:center;line-height:1.68;font-size: 30px;color:#5d01ad;margin: 36px auto; max-width: 700px;margin-bottom: 200px;}
 
     /* CTAs (más separación entre secciones) */
-    .cta-grid{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    .btn-pill{background:var(--violet);color:#fff;border:none;border-radius:12px;padding:14px 12px;font-weight:700;font-size:.96rem;text-align:center}
+    .cta-grid{margin-top:36px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;max-width: 700px; margin: 36px auto;s }
+    .btn-pill{background:var(--violet);color:#fff;border:none;border-radius:12px;padding:14px 12px;font-weight:700;font-size:.96rem;text-align:center; }
     .btn-pill:hover{filter:brightness(1.05);color:#fff}
 
     /* Compromiso (más margen superior) */
-    .commit{margin-top:36px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:stretch}
+    .commit{margin-top:36px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;max-width: 700px; margin: 36px auto;}
     .tile-purple{background:var(--violet);color:#fff;border-radius:12px;padding:18px;font-weight:600;line-height:1.55}
-
-    .thumbs{margin-top:36px;margin-bottom:32px; animation: carrusel 1.5s linear infinite;}
-    .thumb{border-radius:12px;width:100%;height:160px;object-fit:cover;border:1px solid rgba(0,0,0,.08)}
 
     .info-wrap{
     background: var(--aqua) !important;  
@@ -72,22 +69,42 @@
       100% {transform: rotate(0deg);}
     }
 
-    @keyframes carrusel {
-      0% { transform:translateX(0); }
-      20% { transform: rotate(0);}
+    .thumbs {
+  margin-top: 36px;
+  margin-bottom: 32px;
+  overflow: hidden;
+  width: 100%; /* ocupa el ancho del padre */
+}
 
-      25% { transform: rotate(-100%);}
-      45% { transform: rotate(-100%);}
+    .thumb {
+  border-radius: 12px;
+  flex: 0 0 auto;    
+  width: 200px;       
+  height: 160px;
+  object-fit: cover;
+  border: 1px solid rgba(0,0,0,.08);
+}
 
-      50% { transform: rotate(-300%);}
-      70% { transform: rotate(-200%);}
+.thumbs-track {
+  display: flex;
+  animation: carrusel 3s linear infinite;
+}
 
-      75% { transform: rotate(-300%);}
-      95% { transform: rotate(-300%);}
-      100% {
-        transform: translateX(0%);
-      }
-    }
+@keyframes carrusel {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } 
+}
+
+.notita0{ animation: aparicion 2s ease-in-out infinite;  width: 100px ; position: absolute; top: 1000px; left: 220px; }
+.notita1{ animation: aparicion 2s ease-in-out infinite; width: 200px ; position: absolute; top: 1220px; left: 140px; }
+.notita2{ animation: aparicion 2s ease-in-out infinite; width: 150px ; position: absolute; top: 1200px; right: 180px;  }
+.notita3{ animation: aparicion 2s ease-in-out infinite; width: 100px ; position: absolute; top: 1000px; right: 180px; }
+
+@keyframes aparicion {
+    0%   { transform: scale(0.5); }
+  50%  { transform: scale(1.2); } /* se agranda */
+  100% { transform: scale(1); }   /* vuelve al tamaño normal */
+}
 
   </style>
 </head>
@@ -101,6 +118,7 @@
     </header>
 
     <!-- Intro -->
+
     <p class="intro">
       Scorik es un sitio web especializado en la
       conversión de archivos de audio a partituras
@@ -109,7 +127,11 @@
       transformar sus composiciones en formato de partitura de manera
       sencilla y eficaz.
     </p>
-
+    <img class="notita0" src="assets/Group (1).png" alt="notita0"></img>
+    <img class="notita1" src="assets/Group (2).png" alt="notita1"></img>
+    <img class="notita2" src="assets/Group (1).png" alt="notita2"></img>
+    <img class="notita3" src="assets/Group (2).png" alt="notita3"></img>
+    
     <!-- CTAs fila 1 -->
     <div class="cta-grid">
       <a class="btn-pill" href="#mision">Nuestra Misión</a>
@@ -129,15 +151,17 @@
 
     <!-- imágenes en una fila -->
     <div class="thumbs">
-      <div class="row g-3">
-        <div class="col-6 col-md-3"><img class="thumb" src="assets/drums.png"  alt="Batería" 
-            draggable="false"/></div>
-        <div class="col-6 col-md-3"><img class="thumb" src="assets/piano.png"  alt="Piano y partitura" 
-            draggable="false"/></div>
-        <div class="col-6 col-md-3"><img class="thumb" src="assets/guitar.png" alt="Guitarra" 
-            draggable="false"/></div>
-        <div class="col-6 col-md-3"><img class="thumb" src="assets/violin.png" alt="Violín" 
-            draggable="false"/></div>
+      <div class="thumbs-track">
+        <!-- Primera tanda -->
+        <img class="thumb" src="assets/drums.png"  alt="Batería" draggable="false"/>
+        <img class="thumb" src="assets/piano.png"  alt="Piano" draggable="false"/>
+        <img class="thumb" src="assets/guitar.png" alt="Guitarra" draggable="false"/>
+        <img class="thumb" src="assets/violin.png" alt="Violín" draggable="false"/>
+        <!-- Duplicadas para bucle -->
+        <img class="thumb" src="assets/drums.png"  alt="Batería" draggable="false"/>
+        <img class="thumb" src="assets/piano.png"  alt="Piano" draggable="false"/>
+        <img class="thumb" src="assets/guitar.png" alt="Guitarra" draggable="false"/>
+        <img class="thumb" src="assets/violin.png" alt="Violín" draggable="false"/>
       </div>
     </div>
 
@@ -167,9 +191,7 @@
 
     <!-- Footer -->
     <!--<img class="footer-art" src="assets/footer-art.png" alt="Sección final decorativa" draggable="false"/> -->
-    <div style="width: 100%; height: 100%; outline: 3px #5805A1 solid; outline-offset: -2.50px"></div>
-    <div style="color: #5805A1; font-size: 64px; font-family: Kodchasan; font-weight: 400; word-wrap: break-word">SCORIK</div>
-    <div style="width: 100%; height: 100%; outline: 3px #5805A1 solid; outline-offset: -2.50px"></div>
+
     <div class="footer-bottom">
       <a class="site-link" href="#">www.scorik.com.ar</a>
       <div class="icons"><span class="icon"></span><span class="icon"></span><span class="icon"></span></div>
@@ -183,3 +205,4 @@
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
 </body>
 </html>
+
