@@ -41,7 +41,7 @@
     .commit{margin-top:36px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:stretch}
     .tile-purple{background:var(--violet);color:#fff;border-radius:12px;padding:18px;font-weight:600;line-height:1.55}
 
-    .thumbs{margin-top:36px;margin-bottom:32px}
+    .thumbs{margin-top:36px;margin-bottom:32px; animation: carrusel 1.5s linear infinite;}
     .thumb{border-radius:12px;width:100%;height:160px;object-fit:cover;border:1px solid rgba(0,0,0,.08)}
 
     .info-wrap{
@@ -53,15 +53,42 @@
     .info-title{font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:1rem;margin:0 0 .4rem}
     .info-h2{font-weight:800;font-size:1.6rem;margin:0 0 .75rem}
     .info-p{margin:0;font-size:1.06rem}
-    .clef{display:block;margin:34px auto;height:186px}
+    .clef{display:block;margin:35px auto;height:250px;animation:temblar 1s infinite}
 
     .footer-lines{border-top:2px solid #63F6E6;border-bottom:2px solid #111;padding:14px 0;margin-top:48px;text-align:center;font-weight:800;letter-spacing:.35em}
     .footer-bottom{padding:24px 0 40px;text-align:center}
     .site-link{color:#111;text-decoration:none;font-weight:700}
     .icons{display:flex;gap:14px;justify-content:center;margin-top:12px}
-    .icon{width:24px;height:24px;background:var(--violet);opacity:.9;border-radius:4px} 
+    .icon{width:24px;height:24px;background:var(--violet);opacity:.9;border-radius:4px;}
+    
     @media (max-width: 575.98px){ .thumb{height:130px} }
     .footer-art{display:block;width:100%;max-width:940px;margin:36px auto 0;object-fit:contain}
+
+    @keyframes temblar {
+      0%  { transform: rotate(0deg);}
+      25% {transform: rotate(-10deg);}
+      50% {transform: rotate(10deg);}
+      75% {transform: rotate(-10deg);}
+      100% {transform: rotate(0deg);}
+    }
+
+    @keyframes carrusel {
+      0% { transform:translateX(0); }
+      20% { transform: rotate(0);}
+
+      25% { transform: rotate(-100%);}
+      45% { transform: rotate(-100%);}
+
+      50% { transform: rotate(-300%);}
+      70% { transform: rotate(-200%);}
+
+      75% { transform: rotate(-300%);}
+      95% { transform: rotate(-300%);}
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
   </style>
 </head>
 <body>
